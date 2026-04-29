@@ -17,7 +17,7 @@ import type { Tarea } from "../types/Tarea";
  * - Mantener separada la lógica de red del resto de la aplicación.
  * - Facilitar mantenimiento si cambia la URL del backend o endpoints.
  */
-const API_URL = "https://task-manager-fullstack-vawf.onrender.com";
+const API_URL = "https://task-manager-fullstack-vawf.onrender.com/tareas";
 /**
  * Obtiene todas las tareas almacenadas en el backend.
  *

@@ -1,5 +1,5 @@
 export type Tarea = {
-  id: number;
+  id: string;
   titulo: string;
   completada: boolean;
   descripcion?: string;

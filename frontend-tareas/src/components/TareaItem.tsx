@@ -4,8 +4,8 @@ import type { Tarea } from "../types/Tarea";
 interface Props {
   tarea: Tarea;
   onToggle: (tarea: Tarea) => void;
-  onDelete: (id: number) => void;
-  onUpdate: (id: number, data: Partial<Tarea>) => void;
+  onDelete: (id: string) => void;
+  onUpdate: (id: string, data: Partial<Tarea>) => void;
 }
 
 export function TareaItem({ tarea, onToggle, onDelete, onUpdate }: Props) {

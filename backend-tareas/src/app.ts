@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import tareaRoutes from './routes/tarea.routes';
 import { errorHandler } from "./middlewares/errorHandler";
 import cors from "cors";
+import authRoutes from "./routes/auth.routes";
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ app.use('/tareas', tareaRoutes);
 app.get('/', (req, res) => {
   res.send('Servidor funcionando');
 });
-
+app.use("/auth", authRoutes);
 app.use(errorHandler);
 
 export default app;

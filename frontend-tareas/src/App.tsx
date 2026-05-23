@@ -1,7 +1,9 @@
 import { useTareas } from "./hooks/useTareas";
 import { TareaForm } from "./components/TareaForm";
 import { TareaList } from "./components/TareaList";
-
+import { LoginForm } from "./components/LoginForm";
+import { RegisterForm } from "./components/RegisterForm";
+import { useState } from "react";
 /**
  * Componente raíz de la aplicación.
  *
@@ -15,12 +17,43 @@ import { TareaList } from "./components/TareaList";
 
 function App() {
 
+  const token = localStorage.getItem("token");
+  const [isRegistering, setIsRegistering] = useState(false);
+
+  if (!token) {
+    return isRegistering
+    ? (
+        <RegisterForm
+          onBackToLogin={() =>
+            setIsRegistering(false)
+          }
+        />
+      )
+      
+    : (
+        <LoginForm 
+          onSwitchToRegister={() =>
+            setIsRegistering (true)
+          } 
+        />
+      );
+  }
+
   const { tareas, error, toggleTarea, agregarTarea, borrarTarea,actualizarTareaLocal } = useTareas();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
 
   return (
     <div style={{width:"100%",margin: "40px auto",padding: "20px",fontFamily: "Arial, sans-serif",backgroundColor: "#1e1e1e", borderRadius: "8px"}}>
 
       <h1 style={{ textAlign: "center", color: "red" }}>Task Manager</h1>
+
+      <button onClick={handleLogout}>
+        Cerrar sesión
+      </button>
 
       {error && <p style={{ color: "red" }}>
         {error}

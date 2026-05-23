@@ -17,8 +17,8 @@ import type { Tarea } from "../types/Tarea";
  * - Mantener separada la lógica de red del resto de la aplicación.
  * - Facilitar mantenimiento si cambia la URL del backend o endpoints.
  */
-const API_URL = "https://task-manager-fullstack-vawf.onrender.com/tareas";
-/**
+const API_URL = "https://task-manager-fullstack-vawf.onrender.com/tareas"; //"http://localhost:3000/tareas"
+/**  
  * Obtiene todas las tareas almacenadas en el backend.
  *
  * Endpoint utilizado:
@@ -30,8 +30,17 @@ const API_URL = "https://task-manager-fullstack-vawf.onrender.com/tareas";
  * @throws Error
  * Si la petición HTTP falla o el servidor responde con error.
  */
+const getAuthHeaders = () => {
+  const token = localStorage.getItem("token");
+
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+};
+
 export async function obtenerTareas(): Promise<Tarea[]> {
-  const res = await fetch(API_URL);
+  const res = await fetch(API_URL,{headers: getAuthHeaders()});
 
   if (!res.ok) {
     throw new Error("Error al obtener tareas");
@@ -43,18 +52,19 @@ export async function obtenerTareas(): Promise<Tarea[]> {
 export async function crearTarea(
   titulo: string,
   descripcion?: string
-): Promise<Tarea> {
+  ): Promise<Tarea> {
   const res = await fetch(API_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: getAuthHeaders(),
     body: JSON.stringify({ titulo, descripcion }),
   });
 
   if (!res.ok) {
     const error = await res.json();
-    throw new Error(error.message || "Error al crear tarea");
+
+    throw new Error(
+      error.message || "Error al crear tarea"
+    );
   }
 
   return res.json();
@@ -81,14 +91,12 @@ export async function crearTarea(
  * Si la petición HTTP falla.
  */
 export async function actualizarTarea(
-  id: number,
+  id: string,
   tarea: Partial<Tarea>
-): Promise<Tarea> {
+  ): Promise<Tarea> {
   const res = await fetch(`${API_URL}/${id}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: getAuthHeaders(),
     body: JSON.stringify(tarea),
   });
 
@@ -99,9 +107,12 @@ export async function actualizarTarea(
   return res.json();
 }
 
-export async function eliminarTarea(id: number): Promise<void> {
+export async function eliminarTarea(
+  id: string
+  ): Promise<void> {
   const res = await fetch(`${API_URL}/${id}`, {
     method: "DELETE",
+    headers: getAuthHeaders(),
   });
 
   if (!res.ok) {

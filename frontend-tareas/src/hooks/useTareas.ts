@@ -87,7 +87,7 @@ export function useTareas() {
 *  
 *  Borra localmente tambien en el estado.
 */
-    async function borrarTarea(id: number) {
+    async function borrarTarea(id: string) {
     try {
       await eliminarTarea(id);
 
@@ -100,7 +100,7 @@ export function useTareas() {
     }
   }
 
-  async function actualizarTareaLocal(id: number, data: Partial<Tarea>) {
+  async function actualizarTareaLocal(id: string, data: Partial<Tarea>) {
     try {
       const tareaActualizada = await actualizarTarea(id, data);
 

@@ -2,12 +2,14 @@ import { prisma } from '../prisma/client';
 import { AppError } from "../errors/AppError";
 
 // Obtener todas las tareas
-export const obtenerTareas = async () => {
-  return prisma.tarea.findMany();
+export const obtenerTareas = async (userId: string) => {
+  return prisma.tarea.findMany({
+    where: { userId },
+  });
 };
 
 // Obtener tarea por id
-export const obtenerTareaPorId = async (id: number) => {
+export const obtenerTareaPorId = async (id: string) => {
   return prisma.tarea.findUnique({
     where: { id },
   });
@@ -16,31 +18,30 @@ export const obtenerTareaPorId = async (id: number) => {
 // Crear tarea con validación de título y máximo 10 tareas
 export const crearTarea = async (
   titulo: string,
-  descripcion?: string
-) => {
-  // Validación de título
+  descripcion: string | undefined,
+  userId: string
+  ) => {
   if (!titulo || titulo.trim() === "") {
     throw new AppError("El título es obligatorio", 400);
   }
 
-  // Contar tareas existentes
-  const total = await prisma.tarea.count();
+  const total = await prisma.tarea.count({where: { userId }});
   if (total >= 10) {
     throw new AppError("No se pueden crear más de 10 tareas", 400);
   }
 
-  // Crear tarea
   return prisma.tarea.create({
     data: {
       titulo,
       descripcion,
+      userId
     },
   });
 };
 
 // Actualizar tarea
 export const actualizarTarea = async (
-  id: number,
+  id: string,
   data: {
     titulo?: string;
     descripcion?: string;
@@ -54,7 +55,7 @@ export const actualizarTarea = async (
 };
 
 // Eliminar tarea
-export const eliminarTarea = async (id: number) => {
+export const eliminarTarea = async (id: string) => {
   return prisma.tarea.delete({
     where: { id },
   });

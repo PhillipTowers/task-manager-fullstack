@@ -12,8 +12,11 @@ import { Router } from 'express';
 import { getTareas, getTareaPorId, postTarea, updateTarea, deleteTarea } from '../controllers/tarea.controller';
 import { crearTareaSchema, actualizarTareaSchema,idParamSchema} from '../schemas/schema.tarea';
 import { validate } from '../middlewares/validateSchema';
+import { authMiddleware } from "../middlewares/auth.middleware";
 
 const router = Router();
+
+router.use(authMiddleware);
 /**
  * GET /
  * Obtiene todas las tareas.

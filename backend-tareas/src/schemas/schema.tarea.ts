@@ -32,9 +32,7 @@ export const actualizarTareaSchema = z.object({
 
 //Parámetros de ruta (GET / PUT / DELETE por id)
 export const idParamSchema = z.object({
-  id: z.coerce.number({
-    message: 'El id debe ser un número válido',
-  })
-  .int({ message: 'El id debe ser un número entero' })
-  .positive({ message: 'El id debe ser un número positivo' }),
+  id: z.string().uuid({
+    message: 'El id debe ser un UUID válido',
+  }),
 });

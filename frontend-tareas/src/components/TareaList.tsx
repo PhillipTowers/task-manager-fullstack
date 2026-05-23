@@ -17,8 +17,8 @@ import { TareaItem } from "./TareaItem";
 interface Props {
   tareas: Tarea[];
   onToggle: (tarea: Tarea) => void;
-  onDelete: (id: number) => void;
-  onUpdate: (id: number, data: Partial<Tarea>) => void;
+  onDelete: (id: string) => void;
+  onUpdate: (id: string, data: Partial<Tarea>) => void;
 }
 
 export function TareaList({ tareas, onToggle, onDelete, onUpdate }: Props) {

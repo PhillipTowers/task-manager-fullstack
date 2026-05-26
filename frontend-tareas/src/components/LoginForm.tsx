@@ -4,9 +4,10 @@ import { login } from "../api/auth.api";
 
 interface LoginFormProps{
   onSwitchToRegister: () => void;
+  onLoginSuccess:() => void;
 }
 
-export const LoginForm = ({onSwitchToRegister}: LoginFormProps) => {
+export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
@@ -29,15 +30,19 @@ export const LoginForm = ({onSwitchToRegister}: LoginFormProps) => {
 
       localStorage.setItem("token", data.token);
 
+      onLoginSuccess();
       setSuccess("Login exitoso");
-      setLoading(false);
-
+      
+      
     } catch (error) {
 
       console.error(error);
       setError("Credenciales inválidas");
-      setLoading(false);
+      
 
+    }
+    finally{
+       setLoading(false);
     }
   };
 

@@ -16,11 +16,10 @@ import { useState } from "react";
  */
 
 function App() {
-
-  const token = localStorage.getItem("token");
   const [isRegistering, setIsRegistering] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
 
-  if (!token) {
+  if (!isAuthenticated) {
     return isRegistering
     ? (
         <RegisterForm
@@ -34,7 +33,9 @@ function App() {
         <LoginForm 
           onSwitchToRegister={() =>
             setIsRegistering (true)
+            
           } 
+          onLoginSuccess={() => setIsAuthenticated(true)}
         />
       );
   }
@@ -43,7 +44,7 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.reload();
+    setIsAuthenticated(false);
   };
 
   return (

@@ -30,7 +30,9 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
 
       localStorage.setItem("token", data.token);
 
-      onLoginSuccess();
+      setTimeout(() => {
+        onLoginSuccess();
+      }, 100);
       setSuccess("Login exitoso");
       
       

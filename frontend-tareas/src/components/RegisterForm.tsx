@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { register } from "../api/auth.api";
 
 interface RegisterFormProps {
   onBackToLogin: () => void;
@@ -17,30 +18,9 @@ export function RegisterForm({ onBackToLogin }: RegisterFormProps) {
       setLoading(true);
 
     try {
-    const response = await fetch("http://localhost:3000/auth/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      }
-    );
 
-    const data = await response.json();
-
-      if (!response.ok) {
-
-      setLoading(false);
-      setError(data.message || "Error registrando usuario");
-      setSuccess("");
-
-      return;
-    }
-
+    const data = await register(email, password)
+    
     setError("");
     setSuccess("Usuario registrado correctamente");
     setLoading(false);

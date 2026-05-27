@@ -35,7 +35,7 @@ function App() {
       );
   }
 
-  const { tareas, error, toggleTarea, agregarTarea, borrarTarea,actualizarTareaLocal, loading } = useTareas();
+  const { tareas, error, toggleTarea, agregarTarea, borrarTarea,actualizarTareaLocal, loading } = useTareas(isAuthenticated);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

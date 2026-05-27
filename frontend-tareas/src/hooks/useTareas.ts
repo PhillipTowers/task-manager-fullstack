@@ -25,6 +25,7 @@ export function useTareas() {
 
   const [tareas, setTareas] = useState<Tarea[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const cargarTareas = async () => {
@@ -33,6 +34,9 @@ export function useTareas() {
         setTareas(data);
       } catch (err: any) {
         setError(err.message);
+      }
+      finally {
+        setLoading(false);
       }
     };
 
@@ -115,6 +119,6 @@ export function useTareas() {
     }
   }
 
-  return { tareas, error, toggleTarea, agregarTarea, borrarTarea, actualizarTareaLocal};
+  return { tareas, error, toggleTarea, agregarTarea, borrarTarea, actualizarTareaLocal,loading};
 }
 

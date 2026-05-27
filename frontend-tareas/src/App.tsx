@@ -27,20 +27,15 @@ function App() {
             setIsRegistering(false)
           }
         />
-      )
-      
-    : (
+      ) : (
         <LoginForm 
-          onSwitchToRegister={() =>
-            setIsRegistering (true)
-            
-          } 
+          onSwitchToRegister={() => setIsRegistering (true)} 
           onLoginSuccess={() => setIsAuthenticated(true)}
         />
       );
   }
 
-  const { tareas, error, toggleTarea, agregarTarea, borrarTarea,actualizarTareaLocal } = useTareas();
+  const { tareas, error, toggleTarea, agregarTarea, borrarTarea,actualizarTareaLocal, loading } = useTareas();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -64,12 +59,16 @@ function App() {
         <TareaForm onAgregar={agregarTarea} />
       </div>
 
-      <TareaList
-        tareas={tareas}
-        onToggle={toggleTarea}
-        onDelete={borrarTarea}
-        onUpdate={actualizarTareaLocal}
-      />
+      {loading ? (
+        <p>Cargando tareas...</p>
+        ) : (
+        <TareaList
+          tareas={tareas}
+          onToggle={toggleTarea}
+          onDelete={borrarTarea}
+          onUpdate={actualizarTareaLocal}
+        /> )
+      }
 
     </div>
   );

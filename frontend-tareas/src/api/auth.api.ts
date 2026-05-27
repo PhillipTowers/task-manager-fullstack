@@ -1,4 +1,4 @@
-const API_URL = "https://task-manager-fullstack-vawf.onrender.com/auth";  //"http://localhost:3000/auth";
+const API_URL ="http://localhost:3000/auth"; //"https://task-manager-fullstack-vawf.onrender.com/auth";  
 
 export const register = async (
   email: string,

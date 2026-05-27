@@ -18,6 +18,7 @@ import { useState } from "react";
 function App() {
   const [isRegistering, setIsRegistering] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
+  const { tareas, error, toggleTarea, agregarTarea, borrarTarea,actualizarTareaLocal, loading } = useTareas(isAuthenticated);
 
   if (!isAuthenticated) {
     return isRegistering
@@ -34,8 +35,6 @@ function App() {
         />
       );
   }
-
-  const { tareas, error, toggleTarea, agregarTarea, borrarTarea,actualizarTareaLocal, loading } = useTareas(isAuthenticated);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

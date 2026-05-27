@@ -21,13 +21,15 @@ import type { Tarea } from "../types/Tarea";
  * - permite reutilizar la lógica en distintos componentes
  * - mantiene los componentes más limpios y enfocados en la UI
  */
-export function useTareas() {
+export function useTareas(isAuthenticated: boolean) {
 
   const [tareas, setTareas] = useState<Tarea[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!isAuthenticated) return;
+
     const cargarTareas = async () => {
       try {
         const data = await obtenerTareas();
@@ -41,7 +43,7 @@ export function useTareas() {
     };
 
     cargarTareas();
-  }, []);
+  }, [isAuthenticated]);
 /**
  * Alterna el estado de completado de una tarea.
  *

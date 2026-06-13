@@ -50,21 +50,25 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
 
   return (
     <form onSubmit={handleSubmit}>
+
       <h2>Login</h2>
 
-      {error && (
-        <p style={{ color: "red" }}>
-          {error}
-        </p>
-      )}
+      <div>
+        {error && (
+          <p style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
 
-      {success && (
-        <p style={{ color: "green" }}>
-          {success}
-        </p>
-      )}
-
-      <input
+        {success && (
+          <p style={{ color: "green" }}>
+            {success}
+          </p>
+        )}
+      </div>
+      
+      <div>
+        <input
         type="email"
         placeholder="Email"
         value={email}
@@ -72,25 +76,32 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
           setEmail(e.target.value)
         }
       />
+      </div>   
 
-      <input
+      <div>
+        <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) =>
           setPassword(e.target.value)
         }
-      />
+        />
+      </div>
 
-      <button type="submit" disabled={loading}>
-        {loading
-          ? "Ingresando..."
-          : "Iniciar sesión"}
-      </button>
+      <div>
+        <button type="submit" disabled={loading}>
+          {loading
+            ? "Ingresando..."
+            : "Iniciar sesión"}
+        </button>
+      </div>
 
-      <button onClick={onSwitchToRegister}>
-        Registrarse
-      </button>
+      <div>
+        <button onClick={onSwitchToRegister}>
+          Registrarse
+        </button>
+      </div>
       
     </form>
   );

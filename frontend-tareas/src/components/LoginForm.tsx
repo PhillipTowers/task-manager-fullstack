@@ -66,8 +66,8 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
           </p>
         )}
       </div>
-      
-      <div>
+
+      <div >
         <input
         type="email"
         placeholder="Email"
@@ -79,7 +79,7 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
       </div>   
 
       <div>
-        <input
+        <input style={{ marginTop: "10px" }}
         type="password"
         placeholder="Password"
         value={password}
@@ -90,7 +90,7 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
       </div>
 
       <div>
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} style={{ marginTop: "20px" }}>
           {loading
             ? "Ingresando..."
             : "Iniciar sesión"}
@@ -98,7 +98,7 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
       </div>
 
       <div>
-        <button onClick={onSwitchToRegister}>
+        <button onClick={onSwitchToRegister} style={{ marginTop: "20px" }}>
           Registrarse
         </button>
       </div>

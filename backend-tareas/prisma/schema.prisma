@@ -15,11 +15,10 @@ model User {
 }
 
 model Tarea {
-  id          String   @id @default(uuid())
+  id          String  @id @default(uuid())
   titulo      String
   descripcion String?
-  completada  Boolean  @default(false)
-
-  userId String
-  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  completada  Boolean @default(false)
+  userId      String
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

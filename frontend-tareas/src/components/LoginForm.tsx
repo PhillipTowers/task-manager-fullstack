@@ -49,7 +49,7 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{width: "300px", margin: "0 auto"}}>
+    <form onSubmit={handleSubmit} style={{width: "300px", margin: "0 auto", border: "3px solid red"}}>
 
       <h2>Login</h2>
 

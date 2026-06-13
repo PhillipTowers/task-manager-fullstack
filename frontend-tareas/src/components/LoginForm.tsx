@@ -98,7 +98,7 @@ export const LoginForm = ({onSwitchToRegister,onLoginSuccess}: LoginFormProps) =
       </div>
 
       <div>
-        <button onClick={onSwitchToRegister} style={{ marginTop: "20px" }}>
+        <button onClick={onSwitchToRegister} style={{ marginTop: "10px" }}>
           Registrarse
         </button>
       </div>

@@ -40,7 +40,7 @@ export function FiltroTareas({busqueda, onBuscar, filtro, setFiltro, totalTareas
             
         </div>
 
-        <p style={{marginTop: "20px", marginBottom: "20px"}}>
+        <p style={{marginTop: "20px", marginBottom: "20px",fontWeight: "bold",textAlign: "center"}}>
           Total: {totalTareas} | Completadas: {tareasCompletadas} | Pendientes: {tareasPendientes}
         </p>
 

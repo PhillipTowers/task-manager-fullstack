@@ -7,7 +7,7 @@ interface Props{
 export function BuscadorTarea({onBuscar, busqueda}: Props){
     
     return(
-        <div >
+        <div style={{ marginBottom: "20px" }}>
             
             <input type="text"
             name="buscador"

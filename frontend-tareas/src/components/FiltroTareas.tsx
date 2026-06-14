@@ -14,12 +14,15 @@ interface FiltroTareasProps {
 export function FiltroTareas({busqueda, onBuscar, filtro, setFiltro, totalTareas, tareasCompletadas, tareasPendientes}: FiltroTareasProps) {
   return (
     <div>
-        <BuscadorTarea
-              busqueda={busqueda}
-              onBuscar={onBuscar}
+        <div style={{ marginBottom: "20px" }}>
+          <BuscadorTarea
+            busqueda={busqueda}
+            onBuscar={onBuscar}
           />
+        </div>
 
-        <div>
+        <div style={{display: "flex",justifyContent: "center",gap: "10px"}}>
+
             <button onClick={() => setFiltro("completadas")}  style={{fontWeight:filtro === "completadas"
               ? "bold" : "normal", backgroundColor: filtro === "completadas" ? "green" : "transparent"}}>
               completadas
@@ -34,11 +37,12 @@ export function FiltroTareas({busqueda, onBuscar, filtro, setFiltro, totalTareas
               ? "bold": "normal", backgroundColor: filtro === "todas" ? "blue" : "transparent" }}>
               todas
             </button>
+            
         </div>
 
-        <p>Total: {totalTareas}</p>
-        <p>Completadas: {tareasCompletadas}</p>
-        <p>Pendientes: {tareasPendientes}</p>
+        <p style={{marginTop: "20px", marginBottom: "20px"}}>
+          Total: {totalTareas} | Completadas: {tareasCompletadas} | Pendientes: {tareasPendientes}
+        </p>
 
     </div>
   );

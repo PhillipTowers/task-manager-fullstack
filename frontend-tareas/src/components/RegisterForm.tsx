@@ -42,21 +42,25 @@ export function RegisterForm({ onBackToLogin }: RegisterFormProps) {
 
     return (
       <div>
+
         <h2>Registro</h2>
-        
-        {error && (
-          <p style={{ color: "red" }}>
-            {error}
-          </p>
-        )}
 
-        {success && (
-          <p style={{ color: "green" }}>
-            {success}
-          </p>
-        )}
+       <div>
+          {error && (
+            <p style={{ color: "red" }}>
+              {error}
+            </p>
+          )}
 
-        <form onSubmit={handleSubmit}>
+          {success && (
+            <p style={{ color: "green" }}>
+              {success}
+            </p>
+          )}
+        </div> 
+
+        <form onSubmit={handleSubmit} style={{width: "300px", margin: "80px auto",padding: 20, border: "1px solid gray", borderRadius: "8px",textAlign: "center"}}>
+
           <div>
             <input
               type="email"
@@ -75,17 +79,19 @@ export function RegisterForm({ onBackToLogin }: RegisterFormProps) {
             />
           </div>
 
-          <button type="submit" disabled={loading}>
-            {loading
-              ? "Registrando..."
-              : "Registrarse"}
-          </button>
+          <div>
+            <button type="submit" disabled={loading} style={{ marginTop: "20px" }}>
+              {loading ? "Registrando..." : "Registrarse"}
+            </button>
+          </div>
+
+          <div>
+            <button onClick={onBackToLogin} style={{ marginTop: "10px" }}>
+              Volver a login
+            </button>
+          </div>
 
         </form>
-
-        <button onClick={onBackToLogin}>
-          Volver a login
-        </button>
 
       </div>
   );

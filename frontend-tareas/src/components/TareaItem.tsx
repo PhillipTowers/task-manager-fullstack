@@ -31,7 +31,7 @@ export function TareaItem({ tarea, onToggle, onDelete, onUpdate }: Props) {
     }}>
 
       {/* TÍTULO + CHECK */}
-      <div style={{ marginBottom: "8px" }}>
+      <div style={{ marginBottom: "8px" ,display: "flex", alignItems: "center"}}>
         <input
           type="checkbox"
           checked={tarea.completada}
@@ -39,7 +39,7 @@ export function TareaItem({ tarea, onToggle, onDelete, onUpdate }: Props) {
         />
 
         <span style={{
-          marginLeft: "8px",
+          marginLeft: "8px", fontWeight: "bold", fontSize: "1.05rem",
           textDecoration: tarea.completada ? "line-through" : "none"
         }}>
           {tarea.titulo}
@@ -73,7 +73,7 @@ export function TareaItem({ tarea, onToggle, onDelete, onUpdate }: Props) {
       )}
 
       {/* BOTONES */}
-      <div style={{ display: "flex", gap: "10px" }}>
+      <div style={{ display: "flex", gap: "10px" ,justifyContent: "flex-end"}}>
         <button onClick={() => setEditando(true)}>
           Editar
         </button>

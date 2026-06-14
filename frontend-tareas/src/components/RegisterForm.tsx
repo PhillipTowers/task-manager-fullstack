@@ -41,7 +41,7 @@ export function RegisterForm({ onBackToLogin }: RegisterFormProps) {
   }
 
     return (
-      <div>
+      <form onSubmit={handleSubmit} style={{width: "300px", margin: "80px auto",padding: 20, border: "1px solid gray", borderRadius: "8px",textAlign: "center"}}>
 
         <h2>Registro</h2>
 
@@ -58,8 +58,6 @@ export function RegisterForm({ onBackToLogin }: RegisterFormProps) {
             </p>
           )}
         </div> 
-
-        <form onSubmit={handleSubmit} style={{width: "300px", margin: "80px auto",padding: 20, border: "1px solid gray", borderRadius: "8px",textAlign: "center"}}>
 
           <div>
             <input
@@ -91,8 +89,6 @@ export function RegisterForm({ onBackToLogin }: RegisterFormProps) {
             </button>
           </div>
 
-        </form>
-
-      </div>
+      </form> 
   );
 }

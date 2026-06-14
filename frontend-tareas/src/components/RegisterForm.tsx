@@ -69,7 +69,7 @@ export function RegisterForm({ onBackToLogin }: RegisterFormProps) {
           </div>
 
           <div>
-            <input
+            <input style={{ marginTop: "10px" }}
               type="password"
               placeholder="Password"
               value={password}

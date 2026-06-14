@@ -66,22 +66,35 @@ function App() {
   } 
 
   return (
-    <div style={{width:"100%",margin: "40px auto",padding: "20px",fontFamily: "Arial, sans-serif",backgroundColor: "#1e1e1e", borderRadius: "8px"}}>
+  <div style={{width: "90%",maxWidth: "900px",margin: "40px auto",padding: "30px",fontFamily: "Arial, sans-serif",backgroundColor: "#1e1e1e",borderRadius: "12px",}}>
 
-      <h1 style={{ textAlign: "center", color: "red" }}>Task Manager</h1>
+    <h1 style={{textAlign: "center", color: "red", marginBottom: "30px"}}>
+      Task Manager
+    </h1>
 
+    <div style={{display: "flex",justifyContent: "center",marginBottom: "20px"}}>
       <button onClick={handleLogout}>
         Cerrar sesión
       </button>
+    </div>
 
-      {error && <p style={{ color: "red" }}>
+    {error && (
+      <p
+        style={{
+          color: "red",
+          textAlign: "center",
+          marginBottom: "20px",
+        }}
+      >
         {error}
-      </p>}
+      </p>
+    )}
 
-      <div style={{ marginBottom:"20px" }}>
-        <TareaForm onAgregar={agregarTarea} />
-      </div>
+    <div style={{ marginBottom: "30px" }}>
+      <TareaForm onAgregar={agregarTarea} />
+    </div>
 
+    <div style={{ marginBottom: "30px" }}>
       <FiltroTareas
         busqueda={busqueda}
         onBuscar={setBusqueda}
@@ -91,18 +104,19 @@ function App() {
         tareasCompletadas={tareasCompletadas}
         tareasPendientes={tareasPendientes}
       />
-
+    </div>
       {loading ? (
-        <p>Cargando tareas...</p>
-        ) : (
+        <p style={{ textAlign: "center" }}>
+          Cargando tareas...
+        </p>
+      ) : (
         <TareaList
           tareas={mostrarTareas}
           onToggle={toggleTarea}
           onDelete={borrarTarea}
           onUpdate={actualizarTareaLocal}
-        /> )
-      }
-      
+        />
+      )}
     </div>
   );
 }

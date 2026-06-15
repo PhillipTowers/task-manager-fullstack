@@ -21,16 +21,16 @@ export function TareaForm({ onAgregar }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", flexWrap: "wrap"}}>
 
-      <input style={{padding: "6px",marginRight: "6px",borderRadius: "4px",border: "1px solid #555"}}
+      <input style={{padding: "6px",borderRadius: "4px",border: "1px solid #555"}}
         type="text"
         placeholder="Título de la tarea"
         value={titulo}
         onChange={(e) => setTitulo(e.target.value)}
       />
 
-      <input style={{padding: "6px",marginRight: "6px",borderRadius: "4px",border: "1px solid #555"}}
+      <input style={{padding: "6px",borderRadius: "4px",border: "1px solid #555"}}
         type="text"
         placeholder="Descripción (opcional)"
         value={descripcion}

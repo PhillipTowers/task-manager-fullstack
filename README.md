@@ -12,7 +12,7 @@ Proyecto desarrollado como pieza de portfolio para demostrar competencias en des
 
 Frontend: https://task-manager-fullstack-rho.vercel.app
 
-Backend: https://task-manager-fullstack-rho.vercel.app
+Backend: https://task-manager-fullstack-vawf.onrender.com
 
 Nota
 
